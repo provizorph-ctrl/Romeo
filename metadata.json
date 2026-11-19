@@ -1,0 +1,8 @@
+{
+  "name": "Письмо от Бека — Приглашение на свидание",
+  "description": "Интерактивная романтическая история и приглашение на свидание",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

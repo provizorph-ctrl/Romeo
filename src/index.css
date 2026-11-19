@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-script: "Marck Script", cursive;
+
+  --color-ivory: #FFF9F4;
+  --color-cream: #F8EEE8;
+  --color-blush: #F4D9DA;
+  --color-dusty-rose: #D9A0A6;
+  --color-burgundy: #98636F;
+  --color-champagne: #D8BD91;
+  --color-warm-brown: #725A55;
+  --color-ink: #4A3835;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #FFF9F4;
+    color: #4A3835;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior-y: contain;
+  }
+
+  body {
+    background-color: #FFF9F4;
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  button,
+  a {
+    touch-action: manipulation;
+  }
+}
+
+/* Subtle paper grain texture using SVG noise */
+.paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.032'/%3E%3C/svg%3E");
+}
+
+/* Print stylesheet specifically for the bouquet QR card */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #printable-qr-card,
+  #printable-qr-card * {
+    visibility: visible !important;
+  }
+  #printable-qr-card {
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    box-shadow: none !important;
+    border: 1px solid #D8BD91 !important;
+    background: #FFF9F4 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
